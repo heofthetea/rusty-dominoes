@@ -1,4 +1,4 @@
-use crate::types::domino::Domino;
+use crate::types::domino::{Domino, Orientation};
 use rand::prelude::*;
 
 pub fn choose_random(k: usize) -> Vec<Domino> {
