@@ -1,4 +1,4 @@
-use crate::types::domino::{Domino, Orientation};
+use crate::types::domino::Domino;
 use rand::prelude::*;
 
 pub fn choose_random(k: usize) -> Vec<Domino> {
@@ -12,9 +12,8 @@ pub fn choose_random(k: usize) -> Vec<Domino> {
     return dominoes;
 }
 
-/*
-Generate a vector containing all possible dominoes.
-*/
+/// Generate a vector containing all possible dominoes.
+/// TODO: this is broken because duplicates
 fn generate_all() -> Vec<Domino> {
     let mut dominoes = Vec::new();
 
