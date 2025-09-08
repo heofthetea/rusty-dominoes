@@ -2,18 +2,20 @@
 
 use crate::generate::choose_random;
 use crate::solve::solve;
+use crate::solve_claude::solve_claude;
 use std::io;
 
 mod generate;
 mod solve;
+mod solve_claude;
 mod types;
 
 fn main() {
     let k = get_num();
     let dominoes = choose_random(k as usize);
     println!("{:?}", dominoes);
-    let solved = solve(&dominoes);
-    println!("{:?}", solved);
+    println!("{:?}", solve(&dominoes));
+    println!("{:?} (claude's solution)", solve_claude(&dominoes))
 }
 
 fn get_num() -> u32 {
