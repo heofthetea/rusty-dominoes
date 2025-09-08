@@ -23,6 +23,16 @@ impl Domino {
             Orientation::RIGHT => Orientation::LEFT,
         }
     }
+    
+    /// Return a new `Domino` that's equal to this one, but rotated
+    pub fn clone_rotated(&self) -> Domino {
+        let mut domino = Domino::new(self.left, self.right);
+        domino.orientation = match self.orientation {
+            Orientation::LEFT => Orientation::RIGHT,
+            Orientation::RIGHT => Orientation::LEFT
+        };
+        return domino;
+    }
 
     /// Checks whether another domino can be appended to this one
     /// Returns:
@@ -31,7 +41,7 @@ impl Domino {
     ///     Option::None if there is no match
     /// Note:
     ///     Comparison always happens with the "actual right", accounting for orientation of `self`.
-    pub fn matches(&self, other: Domino) -> Option<Orientation> {
+    pub fn matches(&self, other: &Domino) -> Option<Orientation> {
         let actual_right = match self.orientation {
             Orientation::LEFT => self.right,
             Orientation::RIGHT => self.left,

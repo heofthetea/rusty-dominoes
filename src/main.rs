@@ -11,6 +11,7 @@ mod types;
 fn main() {
     let k = get_num();
     let dominoes = choose_random(k as usize);
+    println!("{:?}", dominoes);
     let solved = solve(&dominoes);
     println!("{:?}", solved);
 }

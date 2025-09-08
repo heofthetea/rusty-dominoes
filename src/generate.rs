@@ -17,8 +17,8 @@ pub fn choose_random(k: usize) -> Vec<Domino> {
 fn generate_all() -> Vec<Domino> {
     let mut dominoes = Vec::new();
 
-    for i in 1..7 {
-        for ii in 1..7 {
+    for i in  (1..7).rev(){
+        for ii in (1..=i).rev() {
             dominoes.push(Domino::new(i, ii));
         }
     }
