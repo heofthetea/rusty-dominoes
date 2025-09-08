@@ -1,11 +1,11 @@
-use crate::types::domino::{Domino, Orientation};
+use crate::types::domino::{Domino};
 
 pub fn solve(dominoes: &[Domino]) -> Vec<Domino> {
     _solve(&Vec::new(), dominoes)
 }
 
 /// Recursively build a chain of length `target` using a backtracking approach.
-/// Note: this algorithm is built very functional. It only mutates state when absolutely necessary.
+/// Note: this algorithm is built very functional. It mutates state only when absolutely necessary.
 ///
 /// Returns: the longest chain built
 fn _solve(chain: &[Domino], remaining: &[Domino]) -> Vec<Domino> {
@@ -15,7 +15,7 @@ fn _solve(chain: &[Domino], remaining: &[Domino]) -> Vec<Domino> {
         let mut new_remaining = Vec::from(remaining);
         new_remaining.remove(i);
 
-        // We need to treat this differently if there's no chain yet
+        // We need to try the first domino both ways
         if chain.is_empty() {
             let res = start_new_chain(domino, &new_remaining);
             if res.len() > longest.len() {
@@ -25,7 +25,7 @@ fn _solve(chain: &[Domino], remaining: &[Domino]) -> Vec<Domino> {
         }
 
         let orientation = chain.last().unwrap().matches(domino);
-        if orientation.is_none() {
+        if orientation.is_none() { // = does not match
             continue;
         }
         let orientation = orientation.unwrap();
@@ -38,7 +38,6 @@ fn _solve(chain: &[Domino], remaining: &[Domino]) -> Vec<Domino> {
             domino.clone_rotated()
         });
 
-        // recursive call
         let res = _solve(&new_chain, &new_remaining);
         if res.len() > longest.len() {
             longest = res;

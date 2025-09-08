@@ -73,8 +73,6 @@ impl Display for Domino {
 
 ///LEFT = domino.left is actually left
 /// RIGHT = domino.right is the left side (i.e. the domino is flipped)
-
-//TODO encode this information into a domino itself
 #[derive(Clone, Copy, PartialEq, Debug)]
 pub enum Orientation {
     LEFT,

@@ -13,7 +13,6 @@ pub fn choose_random(k: usize) -> Vec<Domino> {
 }
 
 /// Generate a vector containing all possible dominoes.
-/// TODO: this is broken because duplicates
 fn generate_all() -> Vec<Domino> {
     let mut dominoes = Vec::new();
 

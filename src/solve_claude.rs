@@ -22,10 +22,7 @@ I try to avoid mutating state as much as I can, which is kind of the wrong appro
 for a low-level language lol
 */
 
-/// Claude's optimized public interface - more idiomatic naming
-pub fn solve_optimized(dominoes: &[Domino]) -> Vec<Domino> {
-    solve_claude(dominoes)
-}
+// -----------------------------------------------------------------------------------------------
 
 /// Claude's optimized version using more idiomatic Rust patterns
 /// This version focuses on minimizing allocations and using Rust's ownership system effectively
@@ -57,9 +54,11 @@ fn _solve_claude(
 ) {
     // IDIOMATIC: Early return when current chain can't possibly beat the best
     // This is both a logical optimization (pruning) and idiomatic Rust (early returns)
+    // NO YOU HALLUCINATED THAT CONDITION IT CAN LITERALLY NEVER HAPPEN
     if current_chain.len() + (dominoes.len() - used.iter().filter(|&&x| x).count())
         <= best_chain.len()
     {
+        println!("pruned");
         return;
     }
 
