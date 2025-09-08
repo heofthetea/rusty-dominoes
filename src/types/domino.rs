@@ -16,13 +16,6 @@ impl Domino {
             orientation: Orientation::LEFT,
         }
     }
-    // changes only the orientation indicator. left and right should stay final
-    pub fn rotate(&mut self) {
-        self.orientation = match self.orientation {
-            Orientation::LEFT => Orientation::RIGHT,
-            Orientation::RIGHT => Orientation::LEFT,
-        }
-    }
     
     /// Return a new `Domino` that's equal to this one, but rotated
     pub fn clone_rotated(&self) -> Domino {
